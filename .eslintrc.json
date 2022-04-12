@@ -1,0 +1,54 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "prettier",
+        "prettier/react"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": "error",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/react-in-jsx-scope": "off",
+        "no-undef": "warn",
+        "default-param-last": "off",
+        "func-names": "off",
+        "no-unused-vars": "off",
+        "no-var": "error",
+        "quotes": ["error", "single"],
+        "no-multi-spaces": "error",
+        "space-in-parens": "error",
+        "react/function-component-definition": "off",
+        "arrow-body-style": "off",
+        "react/prop-types": "off",
+        "no-shadow": "off",
+        "react/self-closing-comp": [
+          "error",
+          {
+            "component": true,
+            "html": true
+          }
+        ],
+        "import/prefer-default-export": "off",
+        "react/no-unknown-property": "warn",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "import/order": "off",
+        "react/jsx-no-useless-fragment": "off",
+        "no-param-reassign": ["error", { "props": false }]
+    }
+}
