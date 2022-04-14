@@ -12,6 +12,7 @@ const CreatePage = () => {
     phone: Yup.string().required('Phone Required'),
     email: Yup.string().required('Email Required'),
     adress: Yup.string().required('Adress Required'),
+    operator: Yup.string().required('Operator Required'),
   });
 
   const dropDownOptions = [

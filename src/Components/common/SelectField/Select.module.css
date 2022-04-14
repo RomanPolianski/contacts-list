@@ -38,6 +38,21 @@ select.classic:focus {
   margin-left: 25%;
 }
 
+.formError {
+  border-color: rgb(219, 23, 23);
+  transition: all 0.5s ease 0;
+}
+.errorMessage {
+  font-size: 0.7rem;
+  color: rgb(219, 23, 23);
+}
+.errorLogin {
+  font-size: 0.9rem;
+  color: rgb(219, 23, 23);
+  text-align: center;
+  padding-top: 10px;
+}
+
 @media (max-width: 600px) {
   .formInnerContainer {
     margin-left: 3%;
