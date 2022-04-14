@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { Formik, Form } from 'formik';
+import { Formik, Form, FieldArray, Field } from 'formik';
 import InputField from '../common/InputField/InputField';
 import s from './CreatePage.module.css';
 import Select from '../common/SelectField/Select';
@@ -47,6 +47,7 @@ const CreatePage = () => {
   return (
     <Formik
       initialValues={{
+        id: Math.floor(Math.random() * (1000 - 1 + 1)) + 1,
         name: '',
         lastName: '',
         company: '',
@@ -54,11 +55,17 @@ const CreatePage = () => {
         email: '',
         adress: '',
         operator: '',
+        tasks: [
+          {
+            name: '',
+            status: '',
+          },
+        ],
       }}
       validationSchema={validate}
-      //   onSubmit={(values) => {
-      //     dispatch(sendSignUpData(values));
-      //   }}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
     >
       {(formik) => (
         <div className={s.container}>
@@ -105,6 +112,38 @@ const CreatePage = () => {
                   <InputField label="Type in OS" name="os" type="text" placeholder="" />
                 </div>
               )}
+            </div>
+            <div className={s.radioButtons}>
+              <div className={s.radioHeader}>List of Tasks</div>
+              <FieldArray name="tasks">
+                {(fieldArrayProps) => {
+                  const { push, remove, form } = fieldArrayProps;
+                  const { values } = form;
+                  const { tasks } = values;
+                  return (
+                    <div className={s.tasksInputs}>
+                      {tasks.map((item, index) => (
+                        <div key={index}>
+                          <InputField name={`tasks[${index}].name`} label="Task name"/>
+                          <InputField name={`tasks[${index}].status`} label="Status"/>
+                          <div>
+                          {index > 0 && (
+                            <button type="button" className={s.deleteTaskButton} onClick={() => remove(index)}>
+                              {' '}
+                              Delete task{' '}
+                            </button>
+                          )}
+                          </div>
+                        </div>
+                      ))}
+                      <button type="button" className={s.addTaskButton} onClick={() => push()}>
+                            {' '}
+                            Add task{' '}
+                          </button>
+                    </div>
+                  );
+                }}
+              </FieldArray>
             </div>
             <button type="submit" disabled={!formik.isValid} className={s.submitButton}>
               Create
