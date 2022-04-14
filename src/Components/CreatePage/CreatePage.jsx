@@ -79,7 +79,7 @@ const CreatePage = () => {
             <InputField label="Adress" name="adress" type="text" />
             <Select
               control="select"
-              label="Select operator"
+              label="Operator"
               name="operator"
               options={dropDownOptions}
             />
