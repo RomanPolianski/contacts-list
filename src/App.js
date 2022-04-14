@@ -1,10 +1,13 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
+import EditPage from './Components/EditPage/EditPage';
+import CreatePage from './Components/CreatePage/CreatePage';
+import Content from './Components/Content/Content';
 
 function App() {
   return (
     <Routes>
-      <Route path="/contacts-list" element={<Main />} />
+      <Route path="/contacts-list" element={<Content />} />
       <Route path="/create" element={<CreatePage />} />
       <Route path="/edit" element={<EditPage />} />
     </Routes>
