@@ -6,6 +6,35 @@
 .h1 {
   font-size: 40px;
   text-align: center;
+  margin: 3% auto;
+}
+.addTaskButton {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 25%;
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid rgb(189, 240, 169);
+  border-radius: 10px;
+  width: 15%;
+  font-size: 1rem;
+  transform: translateY(0);
+  transition: all 0.2s;
+  background: rgb(189, 240, 169);
+}
+.deleteTaskButton {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 25%;
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid rgb(245, 121, 121);
+  border-radius: 10px;
+  width: 15%;
+  font-size: 1rem;
+  transform: translateY(0);
+  transition: all 0.2s;
+  background: rgb(245, 121, 121);
 }
 .submitButton {
   position: relative;
@@ -27,13 +56,17 @@
   transition: all 0.5s ease 0;
   background-color: rgb(81, 140, 228);
 }
-.radioHeader{
-  margin: 0% -19%;
+.radioHeader {
+  margin: 2% -19%;
   font-weight: bold;
 }
 
-.radioButtons{
+.radioButtons {
   margin-left: 37%;
+}
+
+.tasksInputs {
+  margin-left: -59%;
 }
 
 @media (max-width: 600px) {
@@ -46,7 +79,15 @@
     width: 40%;
     margin-left: 30%;
   }
-  .radioHeader{
+  .radioHeader {
     margin: 0% -54%;
+  }
+  .addTaskButton {
+    margin-left: 5%;
+    width: 90%;
+  }
+  .deleteTaskButton {
+    margin-left: 5%;
+    width: 90%;
   }
 }
