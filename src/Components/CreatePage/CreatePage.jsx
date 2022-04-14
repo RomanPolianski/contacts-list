@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik';
 import InputField from '../common/InputField/InputField';
 import s from './CreatePage.module.css';
 import Select from '../common/SelectField/Select';
+import React, { useState } from 'react';
 
 const CreatePage = () => {
   const digitsOnly = (value) => /^\d+$/.test(value);
@@ -26,6 +27,7 @@ const CreatePage = () => {
     email: Yup.string().email('Must be a valid email').max(25).required('Email is required'),
     adress: Yup.string().required('Adress Required'),
     operator: Yup.string().required('Operator Required'),
+    os: Yup.string().required('OS Required'),
   });
 
   const dropDownOptions = [
@@ -34,6 +36,13 @@ const CreatePage = () => {
     { key: 'A1', value: 'option2' },
     { key: 'Life :)', value: 'option3' },
   ];
+  const dropDownOptions2 = [
+    { key: 'Choose OS', value: '' },
+    { key: 'IOS', value: 'option1' },
+    { key: 'Android', value: 'option2' },
+  ];
+
+  const [selected, setSelected] = useState('');
 
   return (
     <Formik
@@ -67,6 +76,36 @@ const CreatePage = () => {
               name="operator"
               options={dropDownOptions}
             />
+            <div className={s.radioButtons}>
+              <div className={s.radioHeader}>Choose OS</div> Popular
+              <input
+                id="popular"
+                value="popular"
+                name="platform"
+                type="radio"
+                onChange={(e) => setSelected(e.target.value)}
+              />
+              Other
+              <input
+                id="other"
+                value="other"
+                name="platform"
+                type="radio"
+                onChange={(e) => setSelected(e.target.value)}
+              />
+            </div>
+            <div>
+              {selected === 'popular' && (
+                <div>
+                  <Select control="select" label="Select OS" name="os" options={dropDownOptions2} />
+                </div>
+              )}
+              {selected === 'other' && (
+                <div>
+                  <InputField label="Type in OS" name="os" type="text" placeholder="" />
+                </div>
+              )}
+            </div>
             <button type="submit" disabled={!formik.isValid} className={s.submitButton}>
               Create
             </button>
