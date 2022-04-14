@@ -1,0 +1,41 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.h1 {
+  font-size: 40px;
+  text-align: center;
+}
+.submitButton {
+  position: relative;
+  margin-top: 20px;
+  margin-left: 37%;
+  cursor: pointer;
+  padding: 15px;
+  border: 2px solid rgb(81, 140, 228);
+  border-radius: 10px;
+  width: 25%;
+  font-size: 1rem;
+  transform: translateY(0);
+  transition: all 0.2s;
+  background: rgb(235, 240, 233);
+}
+.submitButton:focus {
+  outline: none;
+  box-shadow: none;
+  transition: all 0.5s ease 0;
+  background-color: rgb(81, 140, 228);
+}
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0px;
+  }
+  .submitButton {
+    width: 40%;
+    margin-left: 30%;
+  }
+}
