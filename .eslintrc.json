@@ -50,5 +50,5 @@
         "import/order": "off",
         "react/jsx-no-useless-fragment": "off",
         "no-param-reassign": ["error", { "props": false }]
-    }
+      }
 }
