@@ -1,0 +1,53 @@
+.formInnerContainer {
+  display: flex;
+  flex-flow: column wrap;
+  margin-left: 25%;
+}
+.label {
+  display: block;
+  width: 100px;
+  height: 20px;
+}
+.formInput {
+  position: relative;
+  margin: 5px 0 5px 0;
+  padding: 10px;
+  border: 2px solid rgb(81, 140, 228);
+  border-radius: 10px;
+  width: 60%;
+  font-size: 1rem;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s;
+}
+.formInput:focus {
+  outline: none;
+  box-shadow: none;
+  transition: all 0.5s ease 0;
+  border-color: rgb(0, 0, 0);
+}
+.formError {
+  border-color: rgb(219, 23, 23);
+  transition: all 0.5s ease 0;
+}
+.errorMessage {
+  font-size: 0.7rem;
+  color: rgb(219, 23, 23);
+}
+.errorLogin {
+  font-size: 0.9rem;
+  color: rgb(219, 23, 23);
+  text-align: center;
+  padding-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .formInput {
+    width: 90%;
+  }
+  .formInnerContainer {
+    margin-left: 3%;
+  }
+  .form {
+    margin-top: 40%;
+  }
+}
