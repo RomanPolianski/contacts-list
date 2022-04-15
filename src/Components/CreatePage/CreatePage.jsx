@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { Formik, Form, FieldArray, Field } from 'formik';
+import { Formik, Form, FieldArray } from 'formik';
 import InputField from '../common/InputField/InputField';
 import s from './CreatePage.module.css';
 import Select from '../common/SelectField/Select';
