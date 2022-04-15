@@ -32,14 +32,14 @@ const CreatePage = () => {
 
   const dropDownOptions = [
     { key: 'Choose operator', value: '' },
-    { key: 'MTS', value: 'option1' },
-    { key: 'A1', value: 'option2' },
-    { key: 'Life :)', value: 'option3' },
+    { key: 'MTS', value: 'MTS' },
+    { key: 'A1', value: 'A1' },
+    { key: 'Life :)', value: 'Life :)' },
   ];
   const dropDownOptions2 = [
     { key: 'Choose OS', value: '' },
-    { key: 'IOS', value: 'option1' },
-    { key: 'Android', value: 'option2' },
+    { key: 'IOS', value: 'IOS' },
+    { key: 'Android', value: 'Android' },
   ];
 
   const [selected, setSelected] = useState('');
@@ -55,6 +55,7 @@ const CreatePage = () => {
         email: '',
         adress: '',
         operator: '',
+        os: '',
         tasks: [
           {
             name: '',
@@ -63,9 +64,9 @@ const CreatePage = () => {
         ],
       }}
       validationSchema={validate}
-        onSubmit={(values) => {
-          console.log(values);
-        }}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
     >
       {(formik) => (
         <div className={s.container}>
@@ -77,12 +78,7 @@ const CreatePage = () => {
             <InputField label="Phone" name="phone" type="text" />
             <InputField label="Email" name="email" type="email" />
             <InputField label="Adress" name="adress" type="text" />
-            <Select
-              control="select"
-              label="Operator"
-              name="operator"
-              options={dropDownOptions}
-            />
+            <Select control="select" label="Operator" name="operator" options={dropDownOptions} />
             <div className={s.radioButtons}>
               <div className={s.radioHeader}>Choose OS</div> Popular
               <input
@@ -124,22 +120,26 @@ const CreatePage = () => {
                     <div className={s.tasksInputs}>
                       {tasks.map((item, index) => (
                         <div key={index}>
-                          <InputField name={`tasks[${index}].name`} label="Task name"/>
-                          <InputField name={`tasks[${index}].status`} label="Status"/>
+                          <InputField name={`tasks[${index}].name`} label="Task name" />
+                          <InputField name={`tasks[${index}].status`} label="Status" />
                           <div>
-                          {index > 0 && (
-                            <button type="button" className={s.deleteTaskButton} onClick={() => remove(index)}>
-                              {' '}
-                              Delete task{' '}
-                            </button>
-                          )}
+                            {index > 0 && (
+                              <button
+                                type="button"
+                                className={s.deleteTaskButton}
+                                onClick={() => remove(index)}
+                              >
+                                {' '}
+                                Delete task{' '}
+                              </button>
+                            )}
                           </div>
                         </div>
                       ))}
                       <button type="button" className={s.addTaskButton} onClick={() => push()}>
-                            {' '}
-                            Add task{' '}
-                          </button>
+                        {' '}
+                        Add task{' '}
+                      </button>
                     </div>
                   );
                 }}
