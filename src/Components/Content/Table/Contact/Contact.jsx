@@ -1,4 +1,6 @@
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { setContactId } from '../../../../store/contactsSlice';
 import s from '../../Content.module.css';
 import Task from '../Task/Task';
 
@@ -17,6 +19,8 @@ const Contact = ({
   const task = tasks.map((t) => (
     <Task key={t.task_id} taskName={t.task_name} taskStatus={t.task_status} />
   ));
+
+  const dispatch = useDispatch();
   return (
     <tr>
       <th>{name}</th>
@@ -29,7 +33,11 @@ const Contact = ({
       <th>{os}</th>
       <th>{task}</th>
       <th>
-        <NavLink to="/edit" className={s.backButton}>
+        <NavLink
+          to="/edit"
+          className={s.backButton}
+          onClick={() => dispatch(setContactId(contactId))}
+        >
           Edit
         </NavLink>
       </th>
