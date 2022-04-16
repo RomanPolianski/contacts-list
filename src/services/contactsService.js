@@ -56,4 +56,8 @@ export default class ContactsService {
       tasksUser,
     });
   }
+
+  static async sendDeleteContact(contact_id) {
+    return instance.delete(`/delete-contact/${contact_id}`)
+  }
 }
