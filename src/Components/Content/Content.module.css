@@ -1,13 +1,11 @@
 h1 {
-    text-align: center;
+  text-align: center;
 }
-
 .wrapper {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
 }
-
 .buttonAdd {
   position: relative;
   margin-top: 10%;
@@ -22,10 +20,28 @@ h1 {
   background: rgb(135, 191, 255);
   text-decoration: none;
 }
-
 .buttonAdd:focus {
   outline: none;
   box-shadow: none;
   transition: all 0.5s ease 0;
   background-color: rgb(81, 140, 228);
+}
+.backButton {
+  position: relative;
+  margin-left: 6%;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 10px;
+  width: 25%;
+  font-size: 1rem;
+  transition: all 0.2s;
+  background: rgb(255, 97, 97);
+  text-decoration: none;
+}
+.backButton:focus {
+  outline: none;
+  box-shadow: none;
+  transition: all 0.5s ease 0;
+  background-color: rgb(245, 33, 33);
 }

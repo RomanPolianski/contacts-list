@@ -29,7 +29,9 @@ const Contact = ({
       <th>{os}</th>
       <th>{task}</th>
       <th>
-        <NavLink to="/edit">Edit</NavLink>
+        <NavLink to="/edit" className={s.backButton}>
+          Edit
+        </NavLink>
       </th>
     </tr>
   );
