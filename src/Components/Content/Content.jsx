@@ -4,7 +4,7 @@ import Table from './Table/Table';
 
 const Content = () => {
   return (
-    <div>
+    <div className={s.wrapTable}>
       <h1>Contacts.</h1>
       <Table />
       <NavLink to="/create" className={s.buttonAdd}>

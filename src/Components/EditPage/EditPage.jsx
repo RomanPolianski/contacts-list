@@ -6,7 +6,7 @@ import Select from '../common/SelectField/Select';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { sendUpdateContact } from '../../store/contactsSlice';
+import { sendDeleteContact, sendUpdateContact } from '../../store/contactsSlice';
 
 const EditPage = () => {
   const digitsOnly = (value) => /^\d+$/.test(value);
@@ -52,6 +52,11 @@ const EditPage = () => {
   const dispatch = useDispatch();
   const [selected, setSelected] = useState('other');
 
+  const handleDelete = () => {
+    console.log(contact[0]);
+    dispatch(sendDeleteContact(contact[0]));
+  };
+
   return (
     <Formik
       initialValues={{
@@ -65,7 +70,7 @@ const EditPage = () => {
         operator: contact[0].operator,
         os: contact[0].os,
         tasksUser: contact[0].tasks.map((t) => ({
-            id: t.task_id,
+          id: t.task_id,
           name: t.task_name,
           status: t.task_status,
         })),
@@ -73,7 +78,7 @@ const EditPage = () => {
       validationSchema={validate}
       onSubmit={(values) => {
         console.log(values);
-        dispatch(sendUpdateContact(values))
+        dispatch(sendUpdateContact(values));
       }}
     >
       {(formik) => (
@@ -113,7 +118,12 @@ const EditPage = () => {
               )}
               {selected === 'other' && (
                 <div>
-                  <InputField label="Type in OS" name="os" type="text" placeholder={contact[0].os} />
+                  <InputField
+                    label="Type in OS"
+                    name="os"
+                    type="text"
+                    placeholder={contact[0].os}
+                  />
                 </div>
               )}
             </div>
@@ -154,7 +164,10 @@ const EditPage = () => {
               </FieldArray>
             </div>
             <button type="submit" disabled={!formik.isValid} className={s.submitButton}>
-              Create
+              Edit
+            </button>
+            <button type="button" className={s.deleteContactButton} onClick={handleDelete}>
+              Delete Contact
             </button>
             <NavLink to="/contacts-list" className={s.backButton}>
               Back To Table

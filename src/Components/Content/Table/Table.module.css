@@ -14,7 +14,7 @@ thead tr th {
   border-collapse: collapse;
   margin: 25px auto;
   font-size: 0.9em;
-  min-width: 1100px;
+  max-width: 1200px;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
 }

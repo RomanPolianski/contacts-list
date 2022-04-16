@@ -41,6 +41,7 @@
   margin-top: 20px;
   margin-left: 29%;
   cursor: pointer;
+  color: white;
   padding: 15px;
   border: 2px solid rgb(81, 140, 228);
   border-radius: 10px;
@@ -48,9 +49,29 @@
   font-size: 1rem;
   transform: translateY(0);
   transition: all 0.2s;
-  background: rgb(179, 224, 241);
+  background: rgb(41, 126, 255);
 }
 .submitButton:focus {
+  outline: none;
+  box-shadow: none;
+  transition: all 0.5s ease 0;
+  background-color: rgb(81, 140, 228);
+}
+.deleteContactButton {
+  position: relative;
+  margin-top: 20px;
+  margin-left: 2%;
+  cursor: pointer;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 20%;
+  font-size: 1rem;
+  transform: translateY(0);
+  transition: all 0.2s;
+  background: rgb(214, 0, 0);
+}
+.deleteContactButton:focus {
   outline: none;
   box-shadow: none;
   transition: all 0.5s ease 0;
@@ -89,6 +110,9 @@
 
 .tasksInputs {
   margin-left: -59%;
+  background: rgb(245, 244, 244);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 @media (max-width: 600px) {
