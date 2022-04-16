@@ -4,6 +4,7 @@ import InputField from '../common/InputField/InputField';
 import s from './CreatePage.module.css';
 import Select from '../common/SelectField/Select';
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const CreatePage = () => {
   const digitsOnly = (value) => /^\d+$/.test(value);
@@ -148,6 +149,7 @@ const CreatePage = () => {
             <button type="submit" disabled={!formik.isValid} className={s.submitButton}>
               Create
             </button>
+            <NavLink to="/contacts-list" className={s.backButton}>Back To Table</NavLink>
           </Form>
         </div>
       )}
