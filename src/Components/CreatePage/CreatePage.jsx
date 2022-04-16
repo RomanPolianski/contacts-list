@@ -5,6 +5,8 @@ import s from './CreatePage.module.css';
 import Select from '../common/SelectField/Select';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { sendNewContact } from '../../store/contactsSlice';
 
 const CreatePage = () => {
   const digitsOnly = (value) => /^\d+$/.test(value);
@@ -43,6 +45,7 @@ const CreatePage = () => {
     { key: 'Android', value: 'Android' },
   ];
 
+  const dispatch = useDispatch();
   const [selected, setSelected] = useState('');
 
   return (
@@ -57,7 +60,7 @@ const CreatePage = () => {
         adress: '',
         operator: '',
         os: '',
-        tasks: [
+        tasksUser: [
           {
             name: '',
             status: '',
@@ -67,6 +70,7 @@ const CreatePage = () => {
       validationSchema={validate}
       onSubmit={(values) => {
         console.log(values);
+        dispatch(sendNewContact(values));
       }}
     >
       {(formik) => (
@@ -112,17 +116,17 @@ const CreatePage = () => {
             </div>
             <div className={s.radioButtons}>
               <div className={s.radioHeader}>List of Tasks</div>
-              <FieldArray name="tasks">
+              <FieldArray name="tasksUser">
                 {(fieldArrayProps) => {
                   const { push, remove, form } = fieldArrayProps;
                   const { values } = form;
-                  const { tasks } = values;
+                  const { tasksUser } = values;
                   return (
                     <div className={s.tasksInputs}>
-                      {tasks.map((item, index) => (
+                      {tasksUser.map((item, index) => (
                         <div key={index}>
-                          <InputField name={`tasks[${index}].name`} label="Task name" />
-                          <InputField name={`tasks[${index}].status`} label="Status" />
+                          <InputField name={`tasksUser[${index}].name`} label="Task name" />
+                          <InputField name={`tasksUser[${index}].status`} label="Status" />
                           <div>
                             {index > 0 && (
                               <button
@@ -149,7 +153,9 @@ const CreatePage = () => {
             <button type="submit" disabled={!formik.isValid} className={s.submitButton}>
               Create
             </button>
-            <NavLink to="/contacts-list" className={s.backButton}>Back To Table</NavLink>
+            <NavLink to="/contacts-list" className={s.backButton}>
+              Back To Table
+            </NavLink>
           </Form>
         </div>
       )}
