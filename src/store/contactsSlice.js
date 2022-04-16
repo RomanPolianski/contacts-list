@@ -64,6 +64,22 @@ export const sendUpdateContact = createAsyncThunk(
   }
 );
 
+export const sendDeleteContact = createAsyncThunk(
+  'contacts/sendDeleteContact',
+  async (data, { dispatch }) => {
+    try {
+        console.log(data);
+      const { contact_id } = data;
+      const response = await ContactsService.sendDeleteContact(contact_id);
+      if (response.status === 200) {
+        dispatch(createContactSuccess(response.data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
