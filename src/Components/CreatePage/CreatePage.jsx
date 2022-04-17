@@ -51,7 +51,7 @@ const CreatePage = () => {
   return (
     <Formik
       initialValues={{
-        id: Math.floor(Math.random() * (1000 - 1 + 1)) + 1,
+        id: Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000,
         name: '',
         lastName: '',
         company: '',
@@ -69,7 +69,6 @@ const CreatePage = () => {
       }}
       validationSchema={validate}
       onSubmit={(values) => {
-        console.log(values);
         dispatch(sendNewContact(values));
       }}
     >
