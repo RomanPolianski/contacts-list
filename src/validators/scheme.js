@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const digitsOnly = (value) => /^\d+$/.test(value);
+const digitsOnly = (value) => /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/.test(value);
 export const scheme = Yup.object({
   name: Yup.string()
     .required('Name Required')
@@ -17,7 +17,7 @@ export const scheme = Yup.object({
   phone: Yup.string()
     .required('Phone Required')
     .test('Digits only', 'The field should have digits only', digitsOnly)
-    .max(9, 'Number is too long'),
+    .max(14, 'Number is too long'),
   email: Yup.string().email('Must be a valid email').max(25).required('Email is required'),
   adress: Yup.string().required('Adress Required'),
   operator: Yup.string().required('Operator Required'),
