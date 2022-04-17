@@ -5,7 +5,7 @@ export const fetchContacts = createAsyncThunk('contacts/fetchContacts', async (_
   try {
     const response = await ContactsService.getContacts();
     if (response.status === 200) {
-      dispatch(getContacts(response.data));
+      dispatch(setContacts(response.data));
     }
   } catch (error) {
     console.log(error);
@@ -30,7 +30,7 @@ export const sendNewContact = createAsyncThunk(
         tasksUser
       );
       if (response.status === 200) {
-        dispatch(createContactSuccess(response.data));
+        dispatch(setMessage(response.data));
       }
     } catch (error) {
       console.log(error);
@@ -56,7 +56,7 @@ export const sendUpdateContact = createAsyncThunk(
         tasksUser
       );
       if (response.status === 200) {
-        dispatch(createContactSuccess(response.data));
+        dispatch(setMessage(response.data));
       }
     } catch (error) {
       console.log(error);
@@ -68,11 +68,10 @@ export const sendDeleteContact = createAsyncThunk(
   'contacts/sendDeleteContact',
   async (data, { dispatch }) => {
     try {
-        console.log(data);
       const { contact_id } = data;
       const response = await ContactsService.sendDeleteContact(contact_id);
       if (response.status === 200) {
-        dispatch(createContactSuccess(response.data));
+        dispatch(setMessage(response.data));
       }
     } catch (error) {
       console.log(error);
@@ -84,14 +83,18 @@ const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
     contactId: null,
+    message: null,
     contacts: [],
   },
   reducers: {
-    getContacts(state, action) {
+    setContacts(state, action) {
       state.contacts = action.payload;
     },
-    createContactSuccess(state, action) {
-      state.message = action.payload;
+    setMessage(state, action) {
+      state.message = action.payload.message;
+    },
+    deleteMessage(state) {
+      state.message = null;
     },
     setContactId(state, action) {
       state.contactId = action.payload;
@@ -99,6 +102,6 @@ const contactsSlice = createSlice({
   },
 });
 
-export const { getContacts, createContactSuccess, setContactId } = contactsSlice.actions;
+export const { setContacts, setMessage, deleteMessage, setContactId } = contactsSlice.actions;
 
 export default contactsSlice.reducer;
