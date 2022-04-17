@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable camelcase */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import ContactsService from '../services/contactsService';
 

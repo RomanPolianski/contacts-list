@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { Formik, Form, FieldArray } from 'formik';
 import InputField from '../common/InputField/InputField';
 import s from './CreatePage.module.css';
@@ -25,9 +26,12 @@ const CreatePage = () => {
   const dispatch = useDispatch();
   const [selected, setSelected] = useState('');
   const message = useSelector((state) => state.contacts.message);
-  useEffect(() => () => {
-    dispatch(deleteMessage());
-  }, []);
+  useEffect(
+    () => () => {
+      dispatch(deleteMessage());
+    },
+    []
+  );
 
   if (message === 'Contact created successfully') {
     toast.success('Contact created!', {

@@ -31,7 +31,7 @@ const Table = () => {
 
   return (
     <table className={s.contentTable}>
-      <thead >
+      <thead>
         <tr>
           <th>Name</th>
           <th>Last Name</th>

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { Formik, Form, FieldArray } from 'formik';
 import InputField from '../common/InputField/InputField';
 import s from './EditPage.module.css';
@@ -29,10 +30,12 @@ const EditPage = () => {
   const dispatch = useDispatch();
   const [selected, setSelected] = useState('other');
   const message = useSelector((state) => state.contacts.message);
-  useEffect(() => () => {
-    dispatch(deleteMessage());
-  }, []);
-
+  useEffect(
+    () => () => {
+      dispatch(deleteMessage());
+    },
+    []
+  );
 
   const handleDelete = () => {
     dispatch(sendDeleteContact(contact[0]));

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { setContactId } from '../../../../store/contactsSlice';
