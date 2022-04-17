@@ -60,7 +60,7 @@
   outline: none;
   box-shadow: none;
   transition: all 0.5s ease 0;
-  background-color: rgb(81, 140, 228);
+  background-color: rgb(30, 90, 180);
 }
 .backButton {
   position: relative;
