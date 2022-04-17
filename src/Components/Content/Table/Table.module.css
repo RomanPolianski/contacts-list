@@ -4,12 +4,10 @@ table td {
   padding: 8px;
   font-weight: 400;
 }
-
 thead tr th {
   font-weight: 600;
   background-color: rgb(219, 233, 255);
 }
-
 .contentTable {
   border-collapse: collapse;
   margin: 25px auto;
