@@ -40,7 +40,7 @@ const Table = () => {
           <th>Email</th>
           <th>Adress</th>
           <th>Operator</th>
-          <th>Os</th>
+          <th>OS</th>
           <th>Tasks</th>
           <th> </th>
         </tr>
