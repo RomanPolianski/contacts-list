@@ -3,6 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import EditPage from './Components/EditPage/EditPage';
 import CreatePage from './Components/CreatePage/CreatePage';
 import Content from './Components/Content/Content';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure();
 
 function App() {
   return (

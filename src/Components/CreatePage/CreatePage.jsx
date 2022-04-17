@@ -2,11 +2,12 @@ import { Formik, Form, FieldArray } from 'formik';
 import InputField from '../common/InputField/InputField';
 import s from './CreatePage.module.css';
 import Select from '../common/SelectField/Select';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { sendNewContact } from '../../store/contactsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteMessage, sendNewContact } from '../../store/contactsSlice';
 import { scheme } from '../../validators/scheme';
+import { toast } from 'react-toastify';
 
 const CreatePage = () => {
   const dropDownOptions = [
@@ -23,6 +24,16 @@ const CreatePage = () => {
 
   const dispatch = useDispatch();
   const [selected, setSelected] = useState('');
+  const message = useSelector((state) => state.contacts.message);
+  useEffect(() => () => {
+    dispatch(deleteMessage());
+  }, []);
+
+  if (message === 'Contact created successfully') {
+    toast.success('Contact created!', {
+      toastId: 1,
+    });
+  }
 
   return (
     <Formik

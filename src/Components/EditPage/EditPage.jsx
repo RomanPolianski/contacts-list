@@ -2,11 +2,12 @@ import { Formik, Form, FieldArray } from 'formik';
 import InputField from '../common/InputField/InputField';
 import s from './EditPage.module.css';
 import Select from '../common/SelectField/Select';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { sendDeleteContact, sendUpdateContact } from '../../store/contactsSlice';
+import { deleteMessage, sendDeleteContact, sendUpdateContact } from '../../store/contactsSlice';
 import { scheme } from '../../validators/scheme';
+import { toast } from 'react-toastify';
 
 const EditPage = () => {
   const dropDownOptions = [
@@ -27,10 +28,25 @@ const EditPage = () => {
 
   const dispatch = useDispatch();
   const [selected, setSelected] = useState('other');
+  const message = useSelector((state) => state.contacts.message);
+  useEffect(() => () => {
+    dispatch(deleteMessage());
+  }, []);
+
 
   const handleDelete = () => {
     dispatch(sendDeleteContact(contact[0]));
   };
+
+  if (message === 'Contact updated successfully') {
+    toast.success('Contact updated successfully!', {
+      toastId: 1,
+    });
+  } else if (message === 'Contact deleted successfully') {
+    toast.error('Contact deleted!', {
+      toastId: 2,
+    });
+  }
 
   return (
     <Formik
