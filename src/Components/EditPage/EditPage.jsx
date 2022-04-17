@@ -53,7 +53,6 @@ const EditPage = () => {
   const [selected, setSelected] = useState('other');
 
   const handleDelete = () => {
-    console.log(contact[0]);
     dispatch(sendDeleteContact(contact[0]));
   };
 
@@ -77,7 +76,6 @@ const EditPage = () => {
       }}
       validationSchema={validate}
       onSubmit={(values) => {
-        console.log(values);
         dispatch(sendUpdateContact(values));
       }}
     >
